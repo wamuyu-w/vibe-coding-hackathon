@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetailScope - Products</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/dashboard.html" class="logo">
+                <i class="fas fa-chart-line"></i> RetailScope
+            </a>
+            <ul class="nav-links">
+                <li><a href="/dashboard.html"><i class="fas fa-chart-bar"></i> Dashboard</a></li>
+                <li><a href="/products.html" class="active"><i class="fas fa-box"></i> Products</a></li>
+                <li><a href="/suppliers.html"><i class="fas fa-truck"></i> Suppliers</a></li>
+                <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="card">
+            <div class="flex justify-between items-center">
+                <h1><i class="fas fa-box"></i> Products</h1>
+                <button class="btn btn-primary" id="addProductBtn">
+                    <i class="fas fa-plus"></i> Add Product
+                </button>
+            </div>
+        </div>
+
+        <!-- Products Table -->
+        <div class="card">
+            <div class="table-container">
+                <table class="table" id="productsTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Brand</th>
+                            <th>Unit</th>
+                            <th>Latest Price</th>
+                            <th>Best Price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productsTableBody">
+                        <!-- Products will be populated here via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div id="addProductModal" class="modal" style="display: none;">
+        <div class="modal-content card">
+            <div class="flex justify-between items-center mb-2">
+                <h2><i class="fas fa-plus"></i> Add New Product</h2>
+                <button class="btn btn-secondary" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <form id="addProductForm">
+                <div class="form-group">
+                    <label class="form-label" for="productName">Product Name</label>
+                    <input type="text" id="productName" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="category">Category</label>
+                    <input type="text" id="category" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="brand">Brand</label>
+                    <input type="text" id="brand" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="unit">Unit</label>
+                    <input type="text" id="unit" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="barcode">Barcode (Optional)</label>
+                    <input type="text" id="barcode" class="form-input">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="description">Description (Optional)</label>
+                    <textarea id="description" class="form-input" rows="3"></textarea>
+                </div>
+
+                <div class="flex gap-2">
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">
+                        <i class="fas fa-save"></i> Save Product
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="cancelAdd" style="flex: 1;">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .active {
+            color: var(--primary-color) !important;
+            font-weight: bold;
+        }
+    </style>
+
+    <script src="js/products.js"></script>
+</body>
+
+</html>

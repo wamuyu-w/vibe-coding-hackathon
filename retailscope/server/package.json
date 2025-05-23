@@ -1,0 +1,17 @@
+{
+    "name": "retailscope-server",
+    "version": "1.0.0",
+    "description": "RetailScope backend server",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js",
+        "init-db": "node database/init.js"
+    },
+    "dependencies": {
+        "bcrypt": "^5.1.1",
+        "cookie-parser": "^1.4.6",
+        "express": "^4.18.2",
+        "express-session": "^1.17.3",
+        "sqlite3": "^5.1.6"
+    }
+}

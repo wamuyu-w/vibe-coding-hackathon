@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetailScope - Suppliers</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/dashboard.html" class="logo">
+                <i class="fas fa-chart-line"></i> RetailScope
+            </a>
+            <ul class="nav-links">
+                <li><a href="/dashboard.html"><i class="fas fa-chart-bar"></i> Dashboard</a></li>
+                <li><a href="/products.html"><i class="fas fa-box"></i> Products</a></li>
+                <li><a href="/suppliers.html" class="active"><i class="fas fa-truck"></i> Suppliers</a></li>
+                <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="card">
+            <div class="flex justify-between items-center">
+                <h1><i class="fas fa-truck"></i> Suppliers</h1>
+                <button class="btn btn-primary" id="addSupplierBtn">
+                    <i class="fas fa-plus"></i> Add Supplier
+                </button>
+            </div>
+        </div>
+
+        <!-- Suppliers Table -->
+        <div class="card">
+            <div class="table-container">
+                <table class="table" id="suppliersTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Contact Person</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="suppliersTableBody">
+                        <!-- Suppliers will be populated here via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Supplier Modal -->
+    <div id="addSupplierModal" class="modal" style="display: none;">
+        <div class="modal-content card">
+            <div class="flex justify-between items-center mb-2">
+                <h2><i class="fas fa-plus"></i> Add New Supplier</h2>
+                <button class="btn btn-secondary" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <form id="addSupplierForm">
+                <div class="form-group">
+                    <label class="form-label" for="supplierName">Supplier Name</label>
+                    <input type="text" id="supplierName" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="contactPerson">Contact Person</label>
+                    <input type="text" id="contactPerson" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="phone">Phone</label>
+                    <input type="tel" id="phone" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" id="email" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="address">Address</label>
+                    <textarea id="address" class="form-input" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="notes">Notes (Optional)</label>
+                    <textarea id="notes" class="form-input" rows="3"></textarea>
+                </div>
+
+                <div class="flex gap-2">
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">
+                        <i class="fas fa-save"></i> Save Supplier
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="cancelAdd" style="flex: 1;">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- View Prices Modal -->
+    <div id="viewPricesModal" class="modal" style="display: none;">
+        <div class="modal-content card">
+            <div class="flex justify-between items-center mb-2">
+                <h2><i class="fas fa-chart-line"></i> Price History</h2>
+                <button class="btn btn-secondary" id="closePricesModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="table-container">
+                <table class="table" id="pricesTable">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pricesTableBody">
+                        <!-- Price history will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .active {
+            color: var(--primary-color) !important;
+            font-weight: bold;
+        }
+    </style>
+
+    <script src="js/suppliers.js"></script>
+</body>
+
+</html>
